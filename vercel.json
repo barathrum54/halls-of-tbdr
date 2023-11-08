@@ -4,5 +4,9 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ]
+  ],
+  "builds": {
+    "src": "public/**/*",
+    "use": "@vercel/static"
+  }
 }
