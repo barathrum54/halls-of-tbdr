@@ -12,8 +12,9 @@
 .ui-panel-wrap {
   width: 50%;
   min-height: 200px;
+  height: 100vh;
   padding-top: 30px;
-  max-height: 650px;
+  max-height: 700px;
   position: relative;
   background-color: rgb(248, 236, 213);
   border-radius: 15px;

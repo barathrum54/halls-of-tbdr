@@ -4,7 +4,7 @@
       <v-col cols="6" class="company">
         <div class="top">
           <div class="company-logo">
-            <img :src="'CompanyLogos/' + item.company.icon" alt="" />
+            <img :src="'/CompanyLogos/' + item.company.icon" alt="" />
           </div>
           <div class="title">
             {{ item.title }}
