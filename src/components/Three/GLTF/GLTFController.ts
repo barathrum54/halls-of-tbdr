@@ -1,4 +1,3 @@
-import { gltfModel } from "/src/assets/3d/the_dining_room/scene.gltf";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import gltfModel from "@/assets/3d/the_dining_room/scene.gltf";
