@@ -11,7 +11,7 @@ class SkillsController {
   private skillsLightOn: boolean;
   private selectedSkill: THREE.Mesh | null = null; // A variable to store the currently selected skill
 
-  constructor(scene:any) {
+  constructor(scene: any) {
     this.scene = scene;
     this.createSkillTextMeshes();
     this.createUpperSkillTextMeshes();
