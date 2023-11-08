@@ -5,8 +5,10 @@
       "destination": "/"
     }
   ],
-  "builds": {
-    "src": "public/**/*",
-    "use": "@vercel/static"
-  }
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ]
 }
