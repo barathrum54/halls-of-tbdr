@@ -8,13 +8,6 @@
 import DefaultView from "./View.vue";
 </script>
 <style lang="scss">
-@font-face {
-  font-family: "Roboto"; // Replace with the desired font name
-  src: url("./fonts/Roboto-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 $font-family: "Roboto";
 
 * {

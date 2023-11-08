@@ -11,7 +11,9 @@
 <style lang="scss" scoped>
 .ui-panel-wrap {
   width: 50%;
-  height: 650px;
+  min-height: 200px;
+  padding-top: 30px;
+  max-height: 650px;
   position: relative;
   background-color: rgb(248, 236, 213);
   border-radius: 15px;

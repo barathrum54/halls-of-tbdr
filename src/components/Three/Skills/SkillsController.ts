@@ -4,7 +4,7 @@ import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import * as THREE from "three";
 import { TextPositions, UpperTextPositions } from "@/constants/SkillsThree"; // Import your TextPositions from the appropriate source
 import { degreesToRadians } from "../Helpers/HelperFunctions";
-
+import * as robotTypeface from "@/assets/fonts/roboto_slab.typeface.json";
 class SkillsController {
   private scene;
   private skillsTexts: THREE.Mesh[] = [];
@@ -43,34 +43,32 @@ class SkillsController {
     this.scene.add(spotLight);
 
     TextPositions.forEach((textPosition, index) => {
-      fontLoader.load(
-        "fonts/roboto_slab.typeface.json", // Correct relative path
-        (font) => {
-          const geometry = new TextGeometry(textPosition.text, {
-            font: font,
-            size: 0.03,
-            height: 0.005,
-          });
-          const textureLoader = new THREE.TextureLoader();
-          const texture = textureLoader.load("shaders/textures/crystal.png");
+      const font = fontLoader.parse(robotTypeface);
+      const geometry = new TextGeometry(textPosition.text, {
+        font,
+        size: 0.03,
+        height: 0.005,
+      });
+      const textureLoader = new THREE.TextureLoader();
+      const texture = textureLoader.load("shaders/textures/crystal.png");
 
-          const textMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-              time: { value: 0 },
-              randomOffset: { value: Math.random() * 100 }, // Randomize the start time
-              glowBase: { value: 0.1 },
-              yourTexture: { value: texture },
-            },
-            // Vertex Shader
-            vertexShader: `      varying vec3 vPosition;
+      const textMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+          time: { value: 0 },
+          randomOffset: { value: Math.random() * 100 }, // Randomize the start time
+          glowBase: { value: 0.1 },
+          yourTexture: { value: texture },
+        },
+        // Vertex Shader
+        vertexShader: `      varying vec3 vPosition;
     void main() {
       vPosition = position;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
 `,
 
-            // Fragment Shader
-            fragmentShader: `   varying vec3 vPosition;
+        // Fragment Shader
+        fragmentShader: `   varying vec3 vPosition;
 uniform float time;
 uniform float randomOffset; // Random start time offset
 uniform float glowBase;
@@ -94,41 +92,40 @@ void main() {
 
 
 `,
-          });
+      });
 
-          textMaterial.transparent = true;
-          textMaterial.side = THREE.DoubleSide;
+      textMaterial.transparent = true;
+      textMaterial.side = THREE.DoubleSide;
 
-          const textMesh = new THREE.Mesh(geometry, textMaterial);
-          if (index % 3 === 0) {
-            textMesh.position.set(2.05, 1.4, -1.4 + index * 0.05);
-          } else if (index % 3 === 1) {
-            textMesh.position.set(2.1, 1.4, -1.4 + index * 0.05);
-          } else {
-            textMesh.position.set(2, 1.4, -1.4 + index * 0.05);
-          }
-          if (index > TextPositions.length / 2) {
-            textMesh.rotation.set(0, -1.65, 0); // Reset the initial rotation
-          } else {
-            textMesh.rotation.set(0, -1.35, 0); // Reset the initial rotation
-          }
-          textMesh.name = textPosition.text;
-          this.skillsTexts.push(textMesh);
-          textMesh.userData = {
-            originalPosition: new THREE.Vector3(
-              textMesh.position.x,
-              textMesh.position.y,
-              textMesh.position.z
-            ),
-          };
-          textMesh.castShadow = true;
-          this.scene.add(textMesh); // Add the created text mesh to the scene
-        }
-      );
+      const textMesh = new THREE.Mesh(geometry, textMaterial);
+      if (index % 3 === 0) {
+        textMesh.position.set(2.05, 1.4, -1.4 + index * 0.05);
+      } else if (index % 3 === 1) {
+        textMesh.position.set(2.1, 1.4, -1.4 + index * 0.05);
+      } else {
+        textMesh.position.set(2, 1.4, -1.4 + index * 0.05);
+      }
+      if (index > TextPositions.length / 2) {
+        textMesh.rotation.set(0, -1.65, 0); // Reset the initial rotation
+      } else {
+        textMesh.rotation.set(0, -1.35, 0); // Reset the initial rotation
+      }
+      textMesh.name = textPosition.text;
+      this.skillsTexts.push(textMesh);
+      textMesh.userData = {
+        originalPosition: new THREE.Vector3(
+          textMesh.position.x,
+          textMesh.position.y,
+          textMesh.position.z
+        ),
+      };
+      textMesh.castShadow = true;
+      this.scene.add(textMesh); // Add the created text mesh to the scene
     });
   }
   public createUpperSkillTextMeshes() {
     const fontLoader = new FontLoader();
+    const font = fontLoader.parse(robotTypeface);
     const plane = new THREE.PlaneGeometry(2, 1, 1, 1);
     const planeMaterial = new THREE.ShadowMaterial({
       transparent: true,
@@ -151,42 +148,37 @@ void main() {
     this.scene.add(spotLight);
 
     UpperTextPositions.forEach((textPosition, index) => {
-      fontLoader.load(
-        "fonts/roboto_slab.typeface.json", // Correct relative path
-        (font) => {
-          const geometry = new TextGeometry(textPosition.text, {
-            font: font,
-            size: 0.03,
-            height: 0.005,
-          });
+      const geometry = new TextGeometry(textPosition.text, {
+        font: font,
+        size: 0.03,
+        height: 0.005,
+      });
 
-          const textMaterial = new THREE.MeshPhongMaterial({
-            opacity: 0.2,
-            transparent: true,
-          });
+      const textMaterial = new THREE.MeshPhongMaterial({
+        opacity: 0.2,
+        transparent: true,
+      });
 
-          textMaterial.transparent = true;
-          textMaterial.side = THREE.DoubleSide;
+      textMaterial.transparent = true;
+      textMaterial.side = THREE.DoubleSide;
 
-          const textMesh = new THREE.Mesh(geometry, textMaterial);
-          if (index % 3 === 0) {
-            textMesh.position.set(2.215, 1.53, -1.4 + index * 0.25);
-          } else if (index % 3 === 1) {
-            textMesh.position.set(2.215, 1.53, -1.4 + index * 0.25);
-          } else {
-            textMesh.position.set(2.215, 1.53, -1.4 + index * 0.25);
-          }
-          if (index > UpperTextPositions.length / 2) {
-            textMesh.rotation.set(0, -1.65, 0); // Reset the initial rotation
-          } else {
-            textMesh.rotation.set(0, -1.35, 0); // Reset the initial rotation
-          }
+      const textMesh = new THREE.Mesh(geometry, textMaterial);
+      if (index % 3 === 0) {
+        textMesh.position.set(2.215, 1.53, -1.4 + index * 0.25);
+      } else if (index % 3 === 1) {
+        textMesh.position.set(2.215, 1.53, -1.4 + index * 0.25);
+      } else {
+        textMesh.position.set(2.215, 1.53, -1.4 + index * 0.25);
+      }
+      if (index > UpperTextPositions.length / 2) {
+        textMesh.rotation.set(0, -1.65, 0); // Reset the initial rotation
+      } else {
+        textMesh.rotation.set(0, -1.35, 0); // Reset the initial rotation
+      }
 
-          textMesh.name = textPosition.text;
-          textMesh.castShadow = true;
-          this.scene.add(textMesh); // Add the created text mesh to the scene
-        }
-      );
+      textMesh.name = textPosition.text;
+      textMesh.castShadow = true;
+      this.scene.add(textMesh); // Add the created text mesh to the scene
     });
   }
 

@@ -59,14 +59,14 @@
 
 @font-face {
   font-family: "Kalam"; // Replace with the desired font name
-  src: url("./fonts/Kalam-Regular.ttf") format("truetype");
+  src: url("@/assets/fonts/Kalam-Regular.ttf") format("truetype"); // Use "~@/" to reference the src directory
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Roboto"; // Replace with the desired font name
-  src: url("./fonts/Roboto-Regular.ttf") format("truetype");
+  src: url("@/assets/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

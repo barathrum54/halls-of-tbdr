@@ -1,15 +1,23 @@
 <template>
   <div class="scroll">
-    <div class="scroll-top"></div>
+    <div
+      class="scroll-top"
+      :style="{ backgroundImage: `url(${scroll})` }"
+    ></div>
     <!-- Add transition element with a name -->
     <div class="scroll-body px-10">
       <slot></slot>
     </div>
-    <div class="scroll-bottom"></div>
+    <div
+      class="scroll-bottom"
+      :style="{ backgroundImage: `url(${scroll})` }"
+    ></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import scroll from "@/assets/scroll.png";
+</script>
 
 <style scoped lang="scss">
 .scroll {
