@@ -10,6 +10,7 @@ class GLTFController {
   public loadModel(scene: THREE.Scene, camera: THREE.PerspectiveCamera) {
     const loader = new GLTFLoader();
     loader.load("the_dining_room/scene.gltf", (gltf) => {
+      console.log("MODEL LOADED");
       this.model = gltf.scene;
       scene.add(this.model);
       const of = this.degreesToRadians(30);
