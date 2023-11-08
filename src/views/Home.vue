@@ -1,5 +1,11 @@
 <template>
   <div>
+    <Transition name="scroll">
+      <div class="splash-screen" v-if="splashScreenVisible">
+        <v-img class="logo" src="@/assets/logo.png" />
+      </div>
+    </Transition>
+
     <ThreeRenderer
       :skillSearchQuery="skillSearchQuery"
       @change-current-card="changeCurrentCard"
@@ -66,6 +72,7 @@ import { computed } from "vue";
 import ScrollCard from "@/components/Common/ScrollCard.vue";
 import SignCard from "@/components/Common/SignCard.vue";
 
+const splashScreenVisible = ref(true);
 const currentCard: any = ref("");
 const threeCurrentCard = computed(() => currentCard.value);
 const threeState = ref("");
@@ -90,7 +97,10 @@ const skillSearchAction = (text: string) => {
 };
 onMounted(() => {
   setTimeout(() => {
-    threeState.value = "hero";
+    splashScreenVisible.value = false;
+    setTimeout(() => {
+      threeState.value = "hero";
+    }, 3000);
   }, 3000);
 });
 </script>
@@ -121,5 +131,23 @@ onMounted(() => {
 .scroll-enter-from {
   opacity: 0;
   width: 0px;
+}
+.splash-screen {
+  position: absolute;
+  z-index: 99999 !important;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .logo {
+    width: 100%;
+    max-width: 300px;
+    object-fit: contain;
+    z-index: 99999 !important;
+  }
 }
 </style>
