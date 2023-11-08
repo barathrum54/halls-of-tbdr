@@ -1,0 +1,89 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://vuetifyjs.com/features/sass-variables/`
+// @use 'vuetify/settings' with (
+//   $color-pack: false
+// );
+
+.v-btn {
+  background-color: transparent !important;
+  color: black !important;
+  border-radius: 5px !important;
+  transition: .2s all ease-in-out;
+  box-shadow: none;
+
+  .v-btn__content {
+    font-family: "Kalam" !important;
+    font-weight: 900 !important;
+  }
+
+  &:hover {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+.home-card {
+  background-color: #9d9d9d90 !important;
+  min-width: 40% !important;
+}
+
+.v-field__field {
+  color: black !important;
+}
+
+.home-card {
+  background-image: linear-gradient(45deg, #ffffff, #ffeeba, #ffffff);
+  background-size: 200% 100%;
+  opacity: .9;
+  animation: backgroundSlide 10s linear infinite;
+
+  /* Changed to 8s for a smoother effect */
+}
+
+@keyframes backgroundSlide {
+
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
+}
+
+@font-face {
+  font-family: "Kalam"; // Replace with the desired font name
+  src: url("./fonts/Kalam-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto"; // Replace with the desired font name
+  src: url("./fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Kalam" !important;
+}
+
+.v-btn__content {
+  font-family: "Roboto" !important;
+}
