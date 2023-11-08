@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { TextPositions, UpperTextPositions } from "@/constants/SkillsThree"; // Import your TextPositions from the appropriate source
 import { degreesToRadians } from "../Helpers/HelperFunctions";
 import * as robotTypeface from "@/assets/fonts/roboto_slab.typeface.json";
+import * as crystal from "@/assets/shaders/textures/crystal.png";
 class SkillsController {
   private scene;
   private skillsTexts: THREE.Mesh[] = [];
@@ -50,7 +51,7 @@ class SkillsController {
         height: 0.005,
       });
       const textureLoader = new THREE.TextureLoader();
-      const texture = textureLoader.load("shaders/textures/crystal.png");
+      const texture = textureLoader.load(crystal.default);
 
       const textMaterial = new THREE.ShaderMaterial({
         uniforms: {

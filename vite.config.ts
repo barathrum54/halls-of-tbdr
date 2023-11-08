@@ -9,6 +9,8 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  assetsInclude: ["**/*.gltf"],
+
   plugins: [
     vue({
       template: { transformAssetUrls },
@@ -37,9 +39,17 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-    extensions: [".js", ".json", ".jsx", ".mjs", ".ts", ".tsx", ".vue"],
+    extensions: [
+      ".js",
+      ".json",
+      ".jsx",
+      ".mjs",
+      ".ts",
+      ".tsx",
+      ".vue",
+      ".gltf",
+    ],
   },
-  assetsInclude: ["**/*.gltf", ],
   server: {
     port: 3000,
   },

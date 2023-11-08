@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import gltfModel from "@/assets/3d/the_dining_room/scene.gltf";
 class GLTFController {
   private model: THREE.Object3D | undefined;
 
@@ -10,7 +9,7 @@ class GLTFController {
 
   public loadModel(scene: THREE.Scene, camera: THREE.PerspectiveCamera) {
     const loader = new GLTFLoader();
-    loader.load(gltfModel, (gltf) => {
+    loader.load("the_dining_room/scene.gltf", (gltf) => {
       this.model = gltf.scene;
       scene.add(this.model);
       const of = this.degreesToRadians(30);
