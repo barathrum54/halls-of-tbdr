@@ -7,7 +7,7 @@ export const useAppState = defineStore("app", {
     currentState: "",
   }),
   actions: {
-    setCurrentState(state) {
+    setCurrentState(state: any) {
       this.currentState = state;
     },
     getCurrentState() {
