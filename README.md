@@ -1,69 +1,25 @@
-# base
+# HALLS OF TBDR
 
-## Project setup
+# Three.js Demo with Vue, Vuetify, and Pinia
 
-```
-# yarn
-yarn
+![Logo](logo.png)
 
-# npm
-npm install
+This is a Three.js demo/experiment built using Vue, Vuetify, and Pinia. It showcases the integration of these technologies to create interactive 3D experiences.
 
-# pnpm
-pnpm install
+## Demo
 
-# bun
-bun install
-```
+You can view the live demo of this project by following this link:
 
-### Compiles and hot-reloads for development
+[Demo](https://halls-of-tbdr.vercel.app/)
 
-```
-# yarn
-yarn dev
+## About
 
-# npm
-npm run dev
+This project demonstrates the use of Three.js, a popular 3D library, with Vue.js for building interactive 3D web applications. Vuetify is used for the UI components and Pinia for state management.
 
-# pnpm
-pnpm dev
+## Usage
 
-# bun
-pnpm run dev
-```
+To use this project, simply visit the live demo link provided above.
 
-### Compiles and minifies for production
+## License
 
-```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# bun
-pnpm run build
-```
-
-### Lints and fixes files
-
-```
-# yarn
-yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-
-# bun
-pnpm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
+This project is licensed under the [MIT License](LICENSE).
