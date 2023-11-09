@@ -1,6 +1,6 @@
 # HALLS OF TBDR
 
-# Three.js Demo with Vue, Vuetify, and Pinia
+## Three.js Demo with Vue, Vuetify, and Pinia
 
 ![Logo](public/logo.png)
 
