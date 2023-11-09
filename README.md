@@ -2,7 +2,7 @@
 
 # Three.js Demo with Vue, Vuetify, and Pinia
 
-![Logo](logo.png)
+![Logo](public/logo.png)
 
 This is a Three.js demo/experiment built using Vue, Vuetify, and Pinia. It showcases the integration of these technologies to create interactive 3D experiences.
 
